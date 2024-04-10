@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container p-5">
+    <div class="row3">
+        <aside class="col-12 col-md-6">
+            <h2 class="login">Sign In</h2>    
+            {% include 'forms.html' %}
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me?</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="register-link">
+                <p>Don't have an account? <a 
+                href="./signup.html">Register</a></p>
+            </div>
+        </aside>
+    </div>
+</main>
+{% endblock %}
