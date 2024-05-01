@@ -14,7 +14,6 @@ class UserSignupForm(FlaskForm):
     last_name = StringField('Last name', validators= [DataRequired()])
     email = StringField('Email', validators= [DataRequired(), Email()])
     password = PasswordField('Password', validators= [DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators= [DataRequired()])
     country = SelectMultipleField('Country', choices = [('australia', 'Australia'), ('canada', 'Canada'), 
     ('united states', 'United States'), ('russia', 'Russia'),('south africa', 'South Africa'), 
     ('england', 'England'), ('france', 'France'), ('mexico', 'Mexico'), ('germany', 'Germany'), 

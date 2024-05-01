@@ -9,7 +9,6 @@ auth = Blueprint('auth', __name__, template_folder='auth_templates')
 @auth.route('/sign-up', methods = ['GET', 'POST'])
 def signup():
     form = UserSignupForm()
-
     try:
         if request.method == 'POST' and form.validate_on_submit():
             first_name = form.first_name.data
