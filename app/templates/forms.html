@@ -1,18 +1,40 @@
 <form method="POST">
     {{ form.hidden_tag() }}
+
     <div class="form-group">
-        <fieldset id="email-field3">
+        <fieldset id="email-field">
             {{ form.email.label }}
-            {{ form.email(class = 'form-control', placeholder = "Place Email Here...") }}
+            {% if form.email.errors %}
+            {{ form.email(class = 'form-control is-invalid', placeholder = "Enter your email...") }}
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.email(class = 'form-control', placeholder = "Enter your email...") }}
+            {% endif %}
         </fieldset>
     </div>
 
-        <fieldset id="pass-field3">
+    <div class="form-group">
+        <fieldset id="password-field">
             {{ form.password.label }}
-            {{ form.password(class = "form-control", placeholder = "Place Password Here...") }}
+            {% if form.password.errors %}
+            {{ form.password(class = 'form-control is-invalid', placeholder = "Enter your password...") }}
+            <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.password(class = 'form-control', placeholder = "Enter your password...") }}
+            {% endif %}
         </fieldset>
+    </div>
 
-        
+    <div class="form-group">
         {{ form.submit_button(class = "btn btn-primary btn-block mt-2")}}
+    </div>
 
 </form>

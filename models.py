@@ -1,26 +1,25 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 import uuid
 from datetime import datetime
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 from flask_login import UserMixin
 from flask_login import LoginManager
 from flask_marshmallow import Marshmallow
+from marshmallow import fields
 import secrets
 
-Login_manager = LoginManager()
-ma = Marshmallow()
 db = SQLAlchemy()
+ma = Marshmallow()
+Login_manager = LoginManager()
 
 @Login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
-
 class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key=True)
-    first_name = db.Column(db.String(150), nullable=True, default='')
-    last_name = db.Column(db.String(150), nullable = True, default = '')
+    first_name = db.Column(db.String(50), default='')
+    last_name = db.Column(db.String(50), default='')
     email = db.Column(db.String(150), nullable = False)
     password = db.Column(db.String, nullable = True, default = '')
     g_auth_verify = db.Column(db.Boolean, default = False)
@@ -31,8 +30,8 @@ class User(db.Model, UserMixin):
         self.id = self.set_id()
         self.first_name = first_name
         self.last_name = last_name
-        self.password = self.set_password(password)
         self.email = email
+        self.password = self.set_password(password)
         self.token = self.set_token(24)
         self.g_auth_verify = g_auth_verify
 
@@ -43,8 +42,7 @@ class User(db.Model, UserMixin):
         return str(uuid.uuid4())
     
     def set_password(self, password):
-        self.pw_hash = generate_password_hash(password)
-        return self.pw_hash
+        return generate_password_hash(password)
 
     def __repr__(self):
         return f'User {self.email} has been added to the database'
@@ -77,7 +75,13 @@ class Book(db.Model):
         return (secrets.token_urlsafe())
 
 class BookSchema(ma.Schema):
-    class Meta:
-        fields = ['id', 'title','author','ISBN_number', 'book_length','cover']
+    id = fields.String()
+    title = fields.String()
+    author = fields.String()
+    pages = fields.Integer()
+    ISBN_number = fields.String()
+    cover = fields.String()
+    genre = fields.String()
 
-books_schema = BookSchema()
+book_schema = BookSchema()
+books_schema = BookSchema(many=True)

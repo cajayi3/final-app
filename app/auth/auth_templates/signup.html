@@ -1,17 +1,197 @@
 {% extends 'base.html' %}
 
+{% block title %}Sign Up{% endblock %}
+
 {% block content %}
-    <main class="container p-5">
-        <div class="row1">
-            <aside class="col-12 col-md-6">
-                <h2 class="Account">Create Your Account</h2>
-                {% include 'forms1.html' %}
 
-                <hr>
+<div class="container-signup">
+    <form method="POST" action="{{ url_for('auth.signup') }}">
+        {{ form.hidden_tag() }}
+        <legend class="signup-title"><i class="fa-solid fa-user-plus"></i> Create Account</legend>
 
-                <p class="fa-copyright">CopyRight@TownsendLibrary.Corp 2024</p>
-            </aside>
-        </div>
-    </main>
+        <fieldset class="signup-fieldset border-signup">
+            <div class="name-signup">
+                {{ form.name.label(class="form-control-label") }}
+                {% if form.name.errors %}
+                {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Enter your full name...") }}
+                {% for error in form.name.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {% else %}
+                {{ form.name(class="form-control form-control-lg", placeholder="Enter your full name") }}
+                {% endif %}
+            </div>
+
+            <div class="email-signup">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Enter your email...") }}
+                {% for error in form.email.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {% else %}
+                {{ form.email(class="form-control form-control-lg", placeholder="Enter your email") }}
+                {% endif %}
+            </div>
+
+            <div class="password-signup">
+                {{ form.password.label(class="form-control-label") }}
+                {% if form.password.errors %}
+                {{ form.password(class="form-control form-control-lg is-invalid", placeholder="Enter your password...")
+                }}
+                {% for error in form.password.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {% else %}
+                {{ form.password(class="form-control form-control-lg", placeholder="Enter your password (min 8 characters)") }}
+                {% endif %}
+            </div>
+
+            <div class="confirm-password-signup">
+                {{ form.confirm_password.label(class="form-control-label") }}
+                {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="form-control form-control-lg is-invalid", placeholder="Confirm your
+                password...") }}
+                {% for error in form.confirm_password.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {% else %}
+                {{ form.confirm_password(class="form-control form-control-lg", placeholder="Confirm your password") }}
+                {% endif %}
+            </div>
+
+            <div class="submit-signup p-3 mx-5">
+                {{ form.submit_button(class='btn btn-success btn-lg w-100 mt-3') }}
+            </div>
+
+            <div class="signin-link mt-3 text-center">
+                <p>Already have an account? <a href="{{ url_for('auth.signin') }}" class="link-signin mx-5">Sign In Here</a>
+                </p>
+            </div>
+        </fieldset>
+    </form>
+
+    <style>
+        .container-signup {
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .signup-title {
+            display: block;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #28a745;
+        }
+
+        .signup-title i {
+            margin-right: 10px;
+        }
+
+        .signup-fieldset {
+            border: 2px solid #28a745 !important;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .border-signup {
+            padding: 0 !important;
+        }
+
+        .name-signup,
+        .email-signup,
+        .password-signup,
+        .confirm-password-signup {
+            margin-bottom: 20px;
+        }
+
+        .name-signup label,
+        .email-signup label,
+        .password-signup label,
+        .confirm-password-signup label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-control-lg {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control-lg:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+
+        .form-control-lg.is-invalid {
+            border-color: #dc3545;
+        }
+
+        .form-control-lg.is-invalid:focus {
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+
+        .text-danger {
+            display: block;
+            font-size: 12px;
+            color: #dc3545;
+            margin-top: 5px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .signin-link {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .signin-link p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .link-signin {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .link-signin:hover {
+            color: #218838;
+            text-decoration: underline;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+    </style>
+</div>
 {% endblock %}
-

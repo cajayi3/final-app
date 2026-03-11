@@ -1,3 +1,7 @@
+"""
+This file is kept for backwards compatibility.
+Use run.py at the project root instead.
+"""
 from app import app
 from models import db
 

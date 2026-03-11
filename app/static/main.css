@@ -7,6 +7,22 @@
 
 }
 
+.logout{
+    text-decoration: none;
+    color: #000;
+}
+
+.dashboard {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #000;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.titles {
+  color: #000;
+}
+
 .vertical-menu{
   background: #000;
   padding: 0px 50px 10px 100px;
@@ -44,12 +60,14 @@
   display: flex;
   background: #f2f2f2;
   margin-left: 100px;
+  border-radius: 5px;
 }
 
 .search-bar{
   width: 220px;
   height: 47px;
   font-size: larger;
+  border-radius: 5px;
   font-family: 'Times New Roman', Times, serif;
 }
 
@@ -72,7 +90,7 @@
   width: 40px;
   text-align: center;
   background: white;
-  border-radius: 0 5px 5px 0;
+  border-radius: 15px;
   color: black;
   padding-top: 13px;
 }
@@ -132,12 +150,6 @@
 
 #chk {
   display: none;
-}
-
-.signup {
-  position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 .label {
@@ -239,7 +251,6 @@
 }
 
 .table{
-  table-layout:fixed;
   min-width: 100%;
   width: 100%;
   border-collapse: collapse;
@@ -339,4 +350,127 @@ th,td{
   margin-bottom: 15px;
 }
 
+.form-control {
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 7px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  color: black;
+}
 
+.signin{
+  color: white;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: center;
+  font-size: xx-large;
+  position: relative;
+  top: 50px;
+  margin-bottom: 50px;
+  text-shadow: 3px 3px green;
+}
+
+.border {
+  border-radius: 15px;
+  height: 350px;
+  border-style: dashed;
+  position: relative;
+  top: 75px;
+}
+
+.fa-pencil{
+  position: relative;
+  left: 10px;
+}
+
+.form-control:focus {
+  border-color: #5cb85c;
+  box-shadow: 0px 0px 5px rgba(92, 184, 92, 0.5);
+}
+
+.invalid-feedback{
+  font-size: 14px;
+  color: red;
+}
+
+.btn-success{
+  background-color: #5cb85c;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  border-radius: 8px;
+  width: 110px;
+}
+
+.btn-success:hover {
+  background-color: #449d44;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.legend{
+  font-size: 50px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.card-sign{
+  max-width: 450px;
+  width: 50%;
+}
+
+.submit-login {
+  text-align: center;
+  position: relative;
+  top: 55px;
+  left: 65px;
+}
+
+.email-login{
+  text-align: center;
+  color: white;
+  position: relative;
+  top: 35px;
+}
+
+.password-login{
+  text-align: center;
+  color: white;
+  position: relative;
+  margin-top: 15px;
+  top: 35px;
+}
+
+.name-login{
+  text-align: center;
+  color: white;
+  position: relative;
+  left: 20px;
+  margin-top: 20px;
+  top: 20px;
+}
+
+.container-sign{
+  width: 600px;
+  position: relative;
+  left: 650px;
+}
+
+.books{
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.fa-custom{
+  margin-top: 12px;
+  font-size: 25px;
+  color: brown;
+}
